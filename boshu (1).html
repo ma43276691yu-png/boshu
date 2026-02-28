@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>出品スタッフ募集 | 説明資料</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --pink: #e8619a;
+    --pink-light: #fce8f3;
+    --pink-pale: #fff5fa;
+    --navy: #1a1a3e;
+    --text: #333;
+    --text-light: #666;
+    --white: #fff;
+    --bg: #fafafa;
+    --radius: 14px;
+    --shadow: 0 4px 20px rgba(232,97,154,0.1);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Noto Sans JP', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.8;
+    font-size: 15px;
+  }
+
+  /* Hero */
+  .hero {
+    background: linear-gradient(135deg, #e8619a 0%, #c0392b 60%, #8e1a5a 100%);
+    color: white;
+    padding: 48px 20px 40px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Ccircle cx='30' cy='30' r='20'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+  .hero-badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.2);
+    border: 1px solid rgba(255,255,255,0.4);
+    border-radius: 20px;
+    padding: 4px 16px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    margin-bottom: 16px;
+  }
+  .hero h1 {
+    font-size: 28px;
+    font-weight: 900;
+    margin-bottom: 8px;
+    letter-spacing: 0.02em;
+  }
+  .hero p {
+    font-size: 14px;
+    opacity: 0.85;
+  }
+
+  .content {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 28px 16px 60px;
+  }
+
+  /* Card */
+  .card {
+    background: var(--white);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    margin-bottom: 20px;
+    overflow: hidden;
+  }
+  .card-header {
+    background: linear-gradient(135deg, var(--pink), #c0392b);
+    color: white;
+    padding: 14px 20px;
+    font-size: 16px;
+    font-weight: 900;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .card-body {
+    padding: 20px;
+  }
+
+  /* Profile table */
+  .profile-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  .profile-table tr {
+    border-bottom: 1px solid #f0f0f0;
+  }
+  .profile-table tr:last-child { border-bottom: none; }
+  .profile-table th {
+    text-align: left;
+    padding: 10px 12px;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--pink);
+    width: 35%;
+    background: var(--pink-pale);
+  }
+  .profile-table td {
+    padding: 10px 12px;
+    font-size: 14px;
+    color: var(--text);
+  }
+
+  /* Team table */
+  .team-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+  }
+  .team-table th {
+    background: var(--pink);
+    color: white;
+    padding: 10px 12px;
+    text-align: left;
+    font-weight: 700;
+  }
+  .team-table td {
+    padding: 10px 12px;
+    border-bottom: 1px solid #f0f0f0;
+    color: var(--text-light);
+  }
+  .team-table tr:nth-child(even) td { background: var(--pink-pale); }
+
+  /* Steps */
+  .steps { display: flex; flex-direction: column; gap: 12px; }
+  .step {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+  }
+  .step-num {
+    width: 36px;
+    height: 36px;
+    min-width: 36px;
+    background: linear-gradient(135deg, var(--pink), #c0392b);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 900;
+    font-size: 14px;
+  }
+  .step-content { flex: 1; }
+  .step-title {
+    font-weight: 700;
+    font-size: 15px;
+    color: var(--navy);
+    margin-bottom: 4px;
+  }
+  .step-desc {
+    font-size: 13.5px;
+    color: var(--text-light);
+    line-height: 1.7;
+  }
+
+  /* Plan cards */
+  .plans {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  @media (max-width: 480px) { .plans { grid-template-columns: 1fr; } }
+  .plan {
+    border: 2px solid #eee;
+    border-radius: 10px;
+    padding: 16px;
+    text-align: center;
+  }
+  .plan.featured {
+    border-color: var(--pink);
+    background: var(--pink-pale);
+  }
+  .plan-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: var(--pink);
+    margin-bottom: 6px;
+  }
+  .plan-name {
+    font-size: 17px;
+    font-weight: 900;
+    color: var(--navy);
+    margin-bottom: 10px;
+  }
+  .plan-price {
+    font-size: 26px;
+    font-weight: 900;
+    color: var(--pink);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  .plan-price span { font-size: 13px; font-weight: 500; color: var(--text-light); }
+  .plan-note {
+    font-size: 12px;
+    color: var(--text-light);
+    margin-top: 8px;
+    line-height: 1.6;
+  }
+  .plan-bonus {
+    display: inline-block;
+    background: var(--pink);
+    color: white;
+    border-radius: 4px;
+    padding: 2px 8px;
+    font-size: 11px;
+    font-weight: 700;
+    margin-top: 8px;
+  }
+
+  /* Check list */
+  .check-list { list-style: none; padding: 0; }
+  .check-list li {
+    padding: 8px 0 8px 28px;
+    position: relative;
+    font-size: 14px;
+    color: var(--text);
+    border-bottom: 1px solid #f5f5f5;
+  }
+  .check-list li:last-child { border-bottom: none; }
+  .check-list li::before {
+    content: "✅";
+    position: absolute;
+    left: 0;
+    font-size: 14px;
+  }
+
+  /* Info box */
+  .info-box {
+    background: var(--pink-pale);
+    border: 1px solid #f5c0d8;
+    border-radius: 10px;
+    padding: 14px 16px;
+    font-size: 13.5px;
+    color: #7a2040;
+    line-height: 1.75;
+    margin-top: 12px;
+  }
+  .info-box strong { color: var(--pink); }
+
+  /* Warning box */
+  .warn-box {
+    background: #fff8e1;
+    border: 1px solid #ffe082;
+    border-radius: 10px;
+    padding: 14px 16px;
+    font-size: 13.5px;
+    color: #7a5c00;
+    line-height: 1.75;
+    margin-top: 12px;
+  }
+
+  p.body-text {
+    font-size: 14px;
+    color: var(--text-light);
+    line-height: 1.8;
+    margin-bottom: 12px;
+  }
+
+  /* CTA */
+  .cta {
+    background: linear-gradient(135deg, #e8619a, #c0392b);
+    border-radius: var(--radius);
+    padding: 32px 20px;
+    text-align: center;
+    color: white;
+    margin-top: 28px;
+  }
+  .cta h2 {
+    font-size: 22px;
+    font-weight: 900;
+    margin-bottom: 10px;
+  }
+  .cta p {
+    font-size: 14px;
+    opacity: 0.9;
+    margin-bottom: 20px;
+    line-height: 1.7;
+  }
+  .cta-btn {
+    display: inline-block;
+    background: white;
+    color: var(--pink);
+    font-weight: 900;
+    font-size: 17px;
+    padding: 14px 36px;
+    border-radius: 50px;
+    text-decoration: none;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+    letter-spacing: 0.05em;
+  }
+
+  /* Fade in */
+  .card { animation: fadeUp 0.5s ease both; }
+  .card:nth-child(2) { animation-delay: 0.05s; }
+  .card:nth-child(3) { animation-delay: 0.1s; }
+  .card:nth-child(4) { animation-delay: 0.15s; }
+  .card:nth-child(5) { animation-delay: 0.2s; }
+  .card:nth-child(6) { animation-delay: 0.25s; }
+  .card:nth-child(7) { animation-delay: 0.3s; }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-badge">📋 面接時資料</div>
+  <h1>出品スタッフ募集</h1>
+  <p>お読みいただきありがとうございます😊<br>気になることはなんでも聞いてください！</p>
+</div>
+
+<div class="content">
+
+  <!-- 自己紹介 -->
+  <div class="card">
+    <div class="card-header">👤 自己紹介</div>
+    <div class="card-body">
+      <table class="profile-table">
+        <tr><th>名前</th><td>下田 麻由（みさだ まゆ）</td></tr>
+        <tr><th>年齢</th><td>38歳（1987年生まれ）</td></tr>
+        <tr><th>住まい</th><td>神奈川県藤沢市</td></tr>
+        <tr><th>家族構成</th><td>小6の娘と二人暮らし 🏠</td></tr>
+        <tr><th>本職</th><td>建築関係の事務</td></tr>
+        <tr><th>副業</th><td>フリマサイト物販・Amazon物販<br><small style="color:var(--pink);">※今回はフリマサイト物販の出品さんを募集しています！</small></td></tr>
+      </table>
+      <p class="body-text" style="margin-top:14px;">お給料は上がらない、節約にも限度がある……そんな中でこのお仕事に出会い、娘の将来のために始めました。おかげさまで毎月少しずつ売上が増え、今はチームのみなさんと一緒に運営しています🙌</p>
+    </div>
+  </div>
+
+  <!-- チーム構成 -->
+  <div class="card">
+    <div class="card-header">👥 現在のチーム構成</div>
+    <div class="card-body">
+      <table class="team-table">
+        <tr><th>役割</th><th>人数・補足</th></tr>
+        <tr><td>出品</td><td>9人</td></tr>
+        <tr><td>梱包・発送</td><td>1人（補助1人）</td></tr>
+        <tr><td>画像加工・説明文作成</td><td>出品担当が兼務（3人）</td></tr>
+        <tr><td>リサーチ</td><td>0人（ただいま募集中！）</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- お仕事の概要 -->
+  <div class="card">
+    <div class="card-header">💼 お仕事の概要</div>
+    <div class="card-body">
+      <p class="body-text">中国から仕入れた商品をフリマサイトで販売するお仕事です。今回お願いしたいのは【出品】の作業です！</p>
+
+      <p style="font-weight:700; font-size:14px; color:var(--navy); margin-bottom:8px;">対応サイト</p>
+      <ul class="check-list" style="margin-bottom:16px;">
+        <li>Yahooフリマ（まずこちらから始めていただきます）</li>
+        <li>メルカリ</li>
+        <li>ラクマ</li>
+        <li>ヤフオク</li>
+      </ul>
+      <p class="body-text">出品にはご自身のアカウントを使っていただきます。アカウントをお持ちでない場合は登録からご案内しますのでご安心ください😊</p>
+
+      <p style="font-weight:700; font-size:14px; color:var(--navy); margin-bottom:8px;">使用端末</p>
+      <ul class="check-list" style="margin-bottom:12px;">
+        <li>スマホ または PC（Yahooフリマはスマホのみ）</li>
+        <li>PCは拡張機能を使うとぐっと楽になります！</li>
+      </ul>
+
+      <div class="warn-box">
+        <strong>⚠️ 確認事項：端末について</strong><br>
+        発送時にQRコードを読み取る作業があるため、スマホ以外に「画像を表示できる端末」が1台必要です。PC・タブレット・デジカメ・古いガラケー・ご家族のスマホでも大丈夫です。お持ちでない場合はご相談ください🙏
+      </div>
+    </div>
+  </div>
+
+  <!-- お仕事の流れ -->
+  <div class="card">
+    <div class="card-header">📋 お仕事の流れ</div>
+    <div class="card-body">
+      <p class="body-text">全ての作業にマニュアルをご用意しています（動画あり）。初めての方もご安心ください！</p>
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-content">
+            <div class="step-title">出品する</div>
+            <div class="step-desc">用意した商品画像・説明文をもとに出品します。説明文は記号や言葉を少し変えるだけでOK！AIを使って文章を作るのもOKです😊慣れたらサクサク進められます。</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-content">
+            <div class="step-title">SEOをかける</div>
+            <div class="step-desc">定期的に価格を上げ下げして、検索の上位に表示させます。隙間時間でOK、数分でできる作業です。</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <div class="step-content">
+            <div class="step-title">売れたら連絡</div>
+            <div class="step-desc">購入があったら発送担当さんに「売れたよ！」と連絡する。発送はお任せです。</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">4</div>
+          <div class="step-content">
+            <div class="step-title">発送通知・評価</div>
+            <div class="step-desc">発送担当さんから「送ったよ！」の連絡が来たら発送通知と評価をして完了です🎵</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">5</div>
+          <div class="step-content">
+            <div class="step-title">売上金の管理</div>
+            <div class="step-desc">先月16日〜当月15日分をまとめて集計し、期日までに送金いただきます。</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 報酬プラン -->
+  <div class="card">
+    <div class="card-header">💰 報酬プラン</div>
+    <div class="card-body">
+      <p class="body-text">以下の2つからお選びいただけます！初心者さんでも初月に50件前後売れるケースがあります😊</p>
+      <div class="plans">
+        <div class="plan featured">
+          <div class="plan-label">PLAN A</div>
+          <div class="plan-name">成果報酬</div>
+          <div class="plan-price">80円<span>/件</span></div>
+          <div class="plan-note">Yahooフリマ：80円/件<br>その他：50円/件<br>売れた分だけ報酬に！</div>
+          <div class="plan-bonus">✨ SEOボーナスあり</div>
+        </div>
+        <div class="plan">
+          <div class="plan-label">PLAN B</div>
+          <div class="plan-name">固定報酬</div>
+          <div class="plan-price">2,000円<span>/月</span></div>
+          <div class="plan-note">月25日以上稼働<br>全商品出品＋毎日SEO必須<br><br>🎉 31件以上売れた分は<br>プランAと同じ金額を追加支給！</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- こんな方に向いています -->
+  <div class="card">
+    <div class="card-header">✅ こんな方に向いています</div>
+    <div class="card-body">
+      <ul class="check-list">
+        <li>毎日コツコツと続けられる方</li>
+        <li>通勤・休憩・寝る前など、隙間時間を活用したい方</li>
+        <li>副業を探している方・子育て中の主婦さん</li>
+        <li>ポイ活が好きな方（似た感覚でできます！）</li>
+        <li>連絡・返信をこまめにできる方</li>
+      </ul>
+      <div class="info-box">
+        <strong>💬 コミュニケーションについて</strong><br>
+        このお仕事は基本的にオンライン上のやりとりのみです。だからこそ、連絡へのレスポンスや反応のスピードがとても大切になります。「既読スルー」や長時間の連絡途絶はトラブルにつながりやすいため、こまめな返信・報告ができる方を求めています。難しい状況のときは「今日は難しいです」の一言でOKです😊
+      </div>
+    </div>
+  </div>
+
+  <!-- 注意事項 -->
+  <div class="card">
+    <div class="card-header">⚠️ 注意事項</div>
+    <div class="card-body">
+      <ul class="check-list">
+        <li>出品すれば必ず売れるわけではありません。毎日コツコツが大切です。</li>
+        <li>売上金の管理・送金がある仕事です。期日を守っていただける方のみご応募ください。</li>
+        <li>送金額は報酬より多くなりますが、仕入れ代・経費が含まれているためです。報酬は別途お支払いします。</li>
+        <li>途中でお仕事を辞める場合は、必ず事前にご連絡の上、引き継ぎ期間を設けてください。<strong>最後まで責任を持ってお仕事していただける方</strong>を求めています。</li>
+        <li>本契約の際には報酬以外にお金のやり取りがあるため、<strong>身分証の交換</strong>をさせていただきます。</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta">
+    <h2>一緒にお仕事しましょう 🕊</h2>
+    <p>「やってみたい！」と少しでも思ったら<br>ぜひ【やります！】とご連絡ください😊<br><br>マニュアル完備・個別フォローあり・初心者さん大歓迎です❣️</p>
+  </div>
+
+</div>
+</body>
+</html>
